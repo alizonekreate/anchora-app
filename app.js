@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+import path from "path";
+import { fileURLToPath } from "url";
 import connectDB from "./db.js";
 
 import authRoutes from "./routes/authRoutes.js";
@@ -13,8 +15,15 @@ connectDB();
 
 const app = express();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(cors());
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false
+  })
+);
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -23,11 +32,15 @@ app.use("/api/habits", habitRoutes);
 app.use("/api/journal", journalRoutes);
 app.use("/api/motivation", motivationRoutes);
 
-app.get("/", (req, res) => res.send("Anchora API is running!"));
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
 app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ error: "Server error" });
+  console.error(err.stack);
+  res.status(500).json({ error: "Server error" });
 });
 
 export default app;
