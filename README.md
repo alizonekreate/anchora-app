@@ -1,40 +1,63 @@
-Anchora Backend (Express + MongoDB)
-Setup
-Install:
-npm install
-Add .env:
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/anchora_db
-NODE_ENV=development
-Run:
-npm run dev
+# Anchora — Productivity App
 
-Tech Specs Checklist
-express ✅
-dotenv ✅
-cors ✅
-helmet ✅
-4+ endpoints ✅
-CRUD ✅ (Tasks endpoints)
-Optional query param ✅ (GET /api/tasks?status=...&search=...&date=...)
-Soft delete ✅ (isDeleted flag)
-Error handling ✅
+Anchora is a full-stack MERN productivity application designed to help users manage tasks, track habits, write journal entries, and stay motivated through personal productivity insights.
 
-Endpoints
-Tasks
-POST /api/tasks
-GET /api/tasks?userId=...&date=YYYY-MM-DD&status=done&search=water
-PATCH /api/tasks/:id
-DELETE /api/tasks/:id (soft delete)
+## Live Demo
 
-Habits
-POST /api/habits
-GET /api/habits?userId=...
-DELETE /api/habits/:id (soft delete)
+https://anchora-app.onrender.com
 
-Motivations
-GET /api/motivations/today?userId=...&type=bible|advice
+## Tech Stack
 
-Notes
-Habits auto-generate daily habit-tasks when you call GET /api/tasks with a date.
-intervalDays=1 daily, 2 every other day, etc.
+- MongoDB
+- Express.js
+- React.js
+- Node.js
+- JavaScript
+- JWT
+- bcrypt
+- Postman
+- Jest
+- Supertest
+- Render
+
+## Features
+
+- User registration and login
+- Secure authentication using JWT and bcrypt
+- Task management
+- Habit tracking
+- Journaling feature
+- Motivation and productivity insights
+- RESTful API structure
+- Backend endpoint testing using Postman, Jest, and Supertest
+- Responsive user interface
+
+## Project Purpose
+
+This project was built to practice developing a complete full-stack application using the MERN stack. It helped me strengthen my understanding of authentication, backend routing, database operations, API testing, and connecting frontend features with backend services.
+
+## What I Learned
+
+- Building RESTful APIs with Express.js
+- Connecting a React frontend to a Node.js backend
+- Working with MongoDB for database persistence
+- Implementing authentication with JWT and bcrypt
+- Testing backend endpoints using Jest and Supertest
+- Using Postman to validate API requests
+- Organizing full-stack project structure
+- Handling user-focused productivity features
+
+## Future Improvements
+
+- Add calendar integration
+- Add dashboard analytics
+- Improve habit progress visualization
+- Add password reset functionality
+- Add email reminders or notifications
+- Improve accessibility and loading states
+
+## Author
+
+**Alison Kate Lachica**  
+Junior Full-Stack Developer  
+GitHub: https://github.com/alizonekreate
